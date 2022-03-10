@@ -85,6 +85,10 @@ Other Links
 
 <ul> <a href="https://coinmarketcap.com/api/documentation/v2/">API from CoinMarket Cap </a> <ul>
 
+<ul> API Key for coin market cap : f1255f3a-72de-4c0f-8067-b6b1764c3cf0
+ </ul>
+
+
 
 <h1> Coin_Bank_App </h1>
 
