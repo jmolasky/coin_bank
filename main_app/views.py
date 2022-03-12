@@ -1,9 +1,11 @@
+from .models import Wallet, Crypto, Amount
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 # Create your views here.
 
@@ -43,7 +45,7 @@ def wallets_detail(request, wallet_id):
     # TODO: use the API to pull additional data about each currency to display - will need to do some
     # math etc. to get this to work but it should be doable
    
-    coins_not_in_wallet = CryptoCurrency.objects.exclude(id__in=wallet_coins.values_list('crypto'))
+    coins_not_in_wallet = Crypto.objects.exclude(id__in=wallet_coins.values_list('crypto'))
 
     return render(request, 'wallets/detail.html', {
         'wallet': wallet,
