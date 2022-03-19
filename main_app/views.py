@@ -1,5 +1,5 @@
 from .models import Wallet, Crypto, Amount
-from .forms import WalletForm, CoinForm
+from .forms import WalletForm, CryptoForm
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.contrib.auth.forms import UserCreationForm
@@ -47,7 +47,7 @@ def signup(request):
 @login_required
 def wallets_index(request):
     # get all wallets
-    wallets = Wallet.objects.all()
+    wallets = Wallet.objects.filter(user = request.user)
     symbols_arr = []
     wallets_arr = []
     for wallet in wallets:
@@ -64,10 +64,10 @@ def wallets_index(request):
         wallet_obj = {
             'id': wallet.id,
             'name': wallet.name,
-            'coins': coins_arr,
+            'crypto': coins_arr,
         }
         # add coins_not_in_wallet to each wallet
-        wallet_obj['coins_not_in_wallet'] =  Crypto.objects.exclude(id__in=wallet_coins.values_list('crypto'))
+        wallet_obj['crypto_not_in_wallet'] =  Crypto.objects.exclude(id__in=wallet_coins.values_list('crypto'))
         wallets_arr.append(wallet_obj)
     # get all symbols in all wallets
     symbols = ','.join(symbols_arr)
@@ -95,7 +95,7 @@ def wallets_index(request):
         print(e)
     
     for wallet in wallets_arr:
-        for coin in wallet['coins']:
+        for coin in wallet['crypto']:
             for obj in coins:
                 if obj['symbol'] == coin['symbol']:
                     coin['price'] = obj['quote']['price']
@@ -124,25 +124,25 @@ def wallets_detail(request, wallet_id):
     wallet_obj = {
         'id': wallet.id,
         'name': wallet.name,
-        'coins': wallet_coins,
+        'crypto': wallet_coins,
     }
     return render(request, 'wallets/detail.html', { 
         'wallet': wallet_obj, 
-        'avail_coins': coins_not_in_wallet 
+        'avail_crypto': coins_not_in_wallet 
     })
 
-def add_coin(request):
-    form = CoinForm(request.POST)
+def add_crypto(request):
+    form = CryptoForm(request.POST)
     if form.is_valid():
         new_coin = form.save(commit=False)
         new_coin.save()
-    return redirect('coin_list')
+    return redirect('crypto_list')
 
 
-class CoinList(ListView):
+class CryptoList(ListView):
     model = Crypto
 
     def get_context_data(self, **kwargs):
-        context = super(CoinList, self).get_context_data(**kwargs)
-        context['form'] = CoinForm()
+        context = super(CryptoList, self).get_context_data(**kwargs)
+        context['form'] = CryptoForm()
         return context

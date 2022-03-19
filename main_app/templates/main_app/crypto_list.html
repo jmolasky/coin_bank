@@ -3,10 +3,12 @@
 {% block content %}
 
 <h1>Coin List</h1>
-
+  
 <form action="{% url 'add_coin' %}" method="POST">
   {% csrf_token %}
-  {{ form.as_p }}
+  <div class="input-field">
+    {{ form.as_p }}
+  </div>
   <input type="submit" value="Add Coin" class="btn blue">
 </form>
 

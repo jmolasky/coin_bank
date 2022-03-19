@@ -1,4 +1,5 @@
 from django.forms import ModelForm
+
 from .models import Wallet, Crypto
 
 class WalletForm(ModelForm):
@@ -7,7 +8,7 @@ class WalletForm(ModelForm):
         model = Wallet
         fields = ('name',)
 
-class CoinForm(ModelForm):
+class CryptoForm(ModelForm):
     class Meta:
         model = Crypto
         fields = ('symbol',)

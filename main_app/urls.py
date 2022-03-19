@@ -9,6 +9,6 @@ urlpatterns = [
     # the wallets
     path('wallets/<int:wallet_id>', views.wallets_detail, name='detail'),
     path('wallets/create', views.add_wallet, name='add_wallet'),
-    path('coins/', views.CoinList.as_view(), name='coin_list'),
-    path('coins/add_coin', views.add_coin, name='add_coin'),
+    path('crypto/', views.CryptoList.as_view(), name='crypto_list'),
+    path('crypto/add_crypto', views.add_crypto, name='add_crypto'),
 ]
