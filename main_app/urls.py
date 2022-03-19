@@ -9,5 +9,3 @@ urlpatterns = [
     path('wallets/<int:wallet_id>', views.wallets_detail, name='detail'),
 
 ]
-
-
