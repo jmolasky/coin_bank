@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< Updated upstream
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +15,20 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script defer src="{% static 'js/script.js' %}"></script>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+  </head>
+=======
+>>>>>>> Stashed changes
+=======
+=======
+>>>>>>> Stashed changes
+=======
+========
+>>>>>>> Stashed changes
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -24,10 +39,134 @@
 
     <!-- Material Icons-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+=======
+
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="msapplication-tap-highlight" content="no">
+      <meta name="description" content="">
+      <title>CoinBank</title>
+      <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"   />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+      <script defer src="{% static 'js/script.js' %}"></script>
+
+
+
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+
+
+
+      <link href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css" rel="stylesheet">
+
+
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+      <link rel="stylesheet" href="{% static 'css/jqvmap.css.css' %}">
+
+
+
+
+      
+     <!-- Materialize-->
+
+     
+     <link rel="stylesheet" href="{% static 'css/admin-materialize.min.css' %}">
+
+      <!-- Material Icons-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
   <body>
+
     <header class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+          <ul>
+            <li>
+              <a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp; CoinBank </a>
+            </li>
+          </ul>
+          <ul class="right">
+            <li><a href="{% url 'about' %}">About</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}  
+          </ul>
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+=======
+          <ul>
+            <li>
+              <a href="/" class="left brand-logo">&nbsp;&nbsp;Coin Bank</a>
+            </li>
+          </ul>
+          <ul class="right">
+            <li><a href="/about">About</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/newwallet">Add New Wallet</a></li>
+            <li><a href="/edit">Buy or Sell Coins</a></li>
+
+
+
+
+          </ul>
+>>>>>>> Stashed changes
+        </div>
+      </nav>
+
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
         </div>
       </nav>
     </header>
@@ -39,20 +178,55 @@
     <footer class="page-footer">
       <div class="container">
         <div class="row">
+
+
+
+      <div class="right">
+        All Rights Reserved, &copy; 2022 CoinBank &nbsp;
+
+      <div class="container">
+        <div class="row">
+
+
+          
+
+
             <h5>Useful Links</h5>
             <ul>
               <li><a href="https://trello.com/invite/accept-board">Trello</a></li>
               <li><a href="https://docs.google.com/presentation/d/1xKGFOaHRCUb5qFIfaoh62O9vhbbdgheGQp9qr9SwmCQ/edit#slide=id.p">Pitch Deck</a></li>
+    
               <li><a href="https://coinmarketcap.com/api/documentation/v1">API by CoinMarketCap</a></li>
               <li><a href="https://github.com/jmolasky/coin_bank">Github</a></li>
             </ul>
           </div>
         </div>
+
+
+
+
+
+
+
+
+
+
       </div>
     </footer>
+
+
+
+
+  </body>
+</html>
     <!-- Scripts (if we put 'defer' I think these can be in the head)-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="{% static 'js/materialize.min.js' %}"></script>
+
+    </footer><!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.min.js"></script>
     
     <!-- External libraries -->
@@ -60,6 +234,7 @@
     <!-- jqvmap -->
 
     <script src="{% static 'js/materialize.min.js' %}"></script>
+
     <script type="text/javascript" src="{% static 'js/jqvmap/jquery.vmap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jqvmap/jquery.vmap.world.js' %}"></script>
 
@@ -70,12 +245,130 @@
 
     <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
     
+    
     <!-- Initialization script -->
+
+
     <script src="{% static 'js/admin.js' %}"></script>
     <script src="{% static 'js/page-scripts/dashboard.js' %}"></script>
     <script src="{% static 'js/init.js' %}"></script>
 
+
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ript>
+
+
+
+ript>
+
+
+></script>
+
+
+
+
+
+
+
+script>
+</script>
+
+script>
+</script>
+
+script>
+</script>
+
+script>
+</script>
+
+
+
+
+
+>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

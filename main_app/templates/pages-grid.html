@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="">
+    <title>Grid - Admin</title>
+    <link href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css" rel="stylesheet">
+    <link href="css/jqvmap.css" rel="stylesheet">
+    <link href="css/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <!-- Fullcalendar-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.7.0/fullcalendar.min.css" rel="stylesheet">
+    <!-- Materialize-->
+    <link href="css/admin-materialize.min.css" rel="stylesheet">
+    <!-- Material Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+     
+      
+      
+      
+      
+      
+    
+  
+ 
+    </header>
+
+    <main><div class="container">
+  <div class="row equal-height-grid">
+
+    <!-- big charts start -->
+    <div class="col s12">
+
+      <div class="card">
+        <div class="card-metrics card-metrics-toggle card-metrics-centered">
+          <div class="card-metric waves-effect active" data-metric="revenue">
+            <div class="card-metric-title">TOTAL VALUE</div>
+            <div class="card-metric-value">$12,476.00</div>
+            <div class="card-metric-change">
+              <i class="material-icons">keyboard_arrow_up</i>
+              12%
+            </div>
+          </div>
+          <div class="card-metric waves-effect" data-metric="users">
+            <div class="card-metric-title">CHANGE</div>
+            <div class="card-metric-value">2024</div>
+            <div class="card-metric-change">
+              <i class="material-icons">keyboard_arrow_up</i>
+              9%
+            </div>
+          </div>
+          <div class="card-metric waves-effect" data-metric="ctr">
+            <div class="card-metric-title"></div>
+            <div class="card-metric-value"></div>
+            <div class="card-metric-change">
+              <i class="material-icons"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-content">
+          <canvas class="card-chart" id="main-toggle-line-chart" height="300"></canvas>
+        </div>
+      </div>
+
+    </div>
+  
+  
+  <br>
+  
+   
+   <!-- chart end -->
+    
+<!-- summary start card -->
+
+   <div class="col s12">
+    <div class="card admin-green white-text">
+      <div class="card-toolbar">
+        <div class="card-toolbar-title">Account Summary</div>
+        <div class="card-toolbar-actions">
+        </div>
+      </div>
+      <div class="card-content card-align-center">
+        <span class="card-title">Total Value of All Wallets</span>
+        <br>
+        <p class="white-text">$80,000</p></div>
+    
+
+    
+
+    
+    </div>
+  </div>
+
+
+<!-- summary card end  -->
+
+<!-- wallet start 1 -->
+
+
+    <div class="col l3 m6 s12">
+      <div class="card admin-blue white-text">
+        <div class="card-toolbar">
+          <div class="card-toolbar-title"><i class="material-icons left"></i>Wallet 1</div>
+          <div class="card-toolbar-actions">
+          </div>
+        </div>
+        <div class="card-content card-align-top">
+         
+          <span class="card-title">Wallet Name 1 ie Metamask </span>
+          <ul>
+          <li>Coin - Eth - 2</li>
+          <li>Coin - BTC - 1.5</li>
+          <li>Coin - LTC - 3.5</li>
+         
+        </ul>
+      </div>
+
+      <div class="card-content card-align-bottom">
+        <p class="white-text">Balance of this wallet is: $500</p>
+        <a class="waves-effect waves-light btn">Buy</a>
+        <a class="waves-effect waves-light btn">Sell</a>
+
+
+      </div>
+    </div>
+  </div>
+    
+    
+    <!-- wallet end  1 -->
+
+    
+
+<!-- wallet start 2 -->
+
+    <div class="col l3 m6 s12">
+      <div class="card admin-yellow white-text">
+        <div class="card-toolbar">
+          <div class="card-toolbar-title"><i class="material-icons left">touch_app</i>Wallet 2</div>
+          <div class="card-toolbar-actions">
+            <div class="dropdown-trigger" data-target="admin-yellow-dropdown">
+            </div>
+          </div>
+        </div>
+        <div class="card-content card-align-top">
+        
+            <span class="card-title">Wallet Name 2 ie Phanton </span>
+            <ul>
+            <li>Coin - Eth - 2</li>    
+            <li>Coin - Eth - 2</li>        
+            <li>Coin - solana - 2</li>    
+          </ul>
+        </div>
+
+        <div class="card-content card-align-bottom">
+          <p class="white-text">Balance of this wallet is: $500</p>
+          <a class="waves-effect waves-light btn">Buy</a>
+          <a class="waves-effect waves-light btn">Sell</a>
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- wallet end 2 -->
+
+    <!-- wallet start 3 -->
+
+
+    <div class="col l3 m6 s12">
+      <div class="card admin-pink white-text">
+        <div class="card-toolbar">
+          <div class="card-toolbar-title"><i class="material-icons left"></i>Wallet 3</div>
+          <div class="card-toolbar-actions">
+          </div>
+        </div>
+        <div class="card-content card-align-top">
+          <span class="card-title">Wallet Name 3 ie Ledger </span>
+          <ul>
+            <li>Coin - Eth - 2</li>    
+            <li>Coin - Eth - 2</li>     
+            <li>Coin - solana - 2</li>  
+          </ul>
+        </div>
+
+        <div class="card-content card-align-bottom">
+          <p class="white-text">Balance of this wallet is: $500</p>
+          <a class="waves-effect waves-light btn">Buy</a>
+          <a class="waves-effect waves-light btn">Sell</a>
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- wallet end 3 -->
+
+     <!-- wallet Add Start -->
+ <div class="col l3 m6 s12">
+  <div class="card admin-pink white-text">
+    <div class="card-toolbar">
+      <div class="card-toolbar-title"><i class="material-icons left"></i>Add Wallet</div>
+      <div class="card-toolbar-actions">
+      </div>
+    </div>
+    <div class="card-content card-align-center">
+      <span class="card-title">Wallet Name : ???<input>  </span>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      </div>
+      <div class="card-content card-align-bottom">
+
+        <!-- <div class="card-content card-align-bottom"> -->
+          <a class="waves-effect waves-light btn">Add Wallet</a>
+        <!-- </div> -->
+
+
+    </div>
+  </div>
+</div>
+
+<!-- wallet add end -->
+
+    <!-- wallet start summary -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    <!-- wallet end  summary -->
+
+
+    </main>
+    
+    <footer class="page-footer">
+
+  <div class="container">
+    <div class="row">
+      
+      
+        <h5>Useful Links</h5>
+        <ul>
+          <li><a href="https://trello.com/invite/accept-board">Trello</a></li>
+          <li><a href="https://docs.google.com/presentation/d/1xKGFOaHRCUb5qFIfaoh62O9vhbbdgheGQp9qr9SwmCQ/edit#slide=id.p">Pitch Deck</a></li>
+
+          <li><a href="https://coinmarketcap.com/api/documentation/v1">API by CoinMarketCap</a></li>
+          <li><a href="https://github.com/jmolasky/coin_bank">Github</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer><!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.min.js"></script>
+
+<!-- External libraries -->
+
+<!-- jqvmap -->
+<script type="text/javascript" src="js/jqvmap/jquery.vmap.min.js"></script>
+<script type="text/javascript" src="js/jqvmap/jquery.vmap.world.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/jqvmap/jquery.vmap.sampledata.js"></script>
+
+<!-- ChartJS -->
+<script type="text/javascript" src="js/Chart.js"></script>
+<script type="text/javascript" src="js/Chart.Financial.js"></script>
+
+
+<script src="js/masonry.pkgd.min.js"></script>
+
+
+<!-- Initialization script -->
+<script src="js/admin.js"></script>
+    <script src="js/page-scripts/dashboard.js"></script>
+    <script src="js/init.js"></script>
+  </body>
+</html>
