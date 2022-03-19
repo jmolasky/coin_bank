@@ -1,6 +1,7 @@
 from .models import Wallet, Crypto, Amount
-from .forms import WalletForm
+from .forms import WalletForm, CoinForm
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from decouple import config
@@ -129,3 +130,19 @@ def wallets_detail(request, wallet_id):
         'wallet': wallet_obj, 
         'avail_coins': coins_not_in_wallet 
     })
+
+def add_coin(request):
+    form = CoinForm(request.POST)
+    if form.is_valid():
+        new_coin = form.save(commit=False)
+        new_coin.save()
+    return redirect('coin_list')
+
+
+class CoinList(ListView):
+    model = Crypto
+
+    def get_context_data(self, **kwargs):
+        context = super(CoinList, self).get_context_data(**kwargs)
+        context['form'] = CoinForm()
+        return context
