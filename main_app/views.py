@@ -7,6 +7,7 @@ from django.contrib.auth import login
 from decouple import config
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
+from django.core.exceptions import ObjectDoesNotExist
 import json
 
 from django.contrib.auth.decorators import login_required
@@ -131,13 +132,40 @@ def wallets_detail(request, wallet_id):
         'avail_crypto': coins_not_in_wallet 
     })
 
-def add_crypto(request):
+def crypto_lookup(request):
     form = CryptoForm(request.POST)
     if form.is_valid():
-        new_coin = form.save(commit=False)
-        new_coin.save()
-    return redirect('crypto_list')
+        symbol = form.cleaned_data['symbol']
+        try:
+            # prevents user from adding duplicate coins
+            database_crypto = Crypto.objects.get(symbol=symbol)
+            return redirect('crypto_list')  
+        except ObjectDoesNotExist:
+            print("Symbol not found on database")
+        parameters = {
+            'symbol': symbol
+        }
+        session = Session()
+        session.headers.update(headers)
+        try:
+            response = session.get(url, params=parameters)
+            if(response):
+                data = json.loads(response.text)
+                data = data['data']
+                crypto = data[symbol][0]
+                print(crypto)
+                return render(request, 'crypto/confirm.html', {
+                    'name': crypto['name'],
+                    'symbol': crypto['symbol'],
+                    'coin_market_cap_id': crypto['id'],
+                })
+            return redirect('crypto_list')
+        except (ConnectionError, Timeout, TooManyRedirects) as e:
+            print(e)
 
+def add_crypto(request, coin_market_cap_id, symbol):
+    Crypto.objects.create(symbol=symbol)
+    return redirect('crypto_list')
 
 class CryptoList(ListView):
     model = Crypto
