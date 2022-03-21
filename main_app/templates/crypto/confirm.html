@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content%}
+
+<h1>Confirm Addition</h1>
+
+<p>Name: {{ name }}</p>
+<p>Symbol: {{ symbol }}</p>
+<p>CoinMarketCap ID: {{ coin_market_cap_id }}</p>
+
+<form action="{% url 'add_crypto' coin_market_cap_id symbol %}" method="POST">
+  {% csrf_token %} 
+  <input type="submit" value="Yes - Add" class="btn blue" />
+  <a href="{% url 'crypto_list' %}" class="btn yellow">Cancel</a>
+</form>
+
+{% endblock %}

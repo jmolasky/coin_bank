@@ -3,14 +3,14 @@
 {% block content %}
 
 <h1>Coin List</h1>
-  
-<form action="{% url 'add_coin' %}" method="POST">
+
+<form action="{% url 'crypto_lookup' %}" method="POST">
   {% csrf_token %}
-  <div class="input-field">
-    {{ form.as_p }}
-  </div>
-  <input type="submit" value="Add Coin" class="btn blue">
+  {{ form.as_p }}
+  <input type="submit" value="Lookup Coin" class="btn blue">
 </form>
+
+<br>
 
 {% for coin in object_list %}
 <div class="card">
