@@ -55,7 +55,16 @@
         <div class="card-content card-align-center">
           <span class="card-title">Total Value of All Wallets</span>
           <br>
-          <p class="white-text">$80,000</p>
+          <p class="white-text">{% for wallet in wallets %}
+            <div class="card">
+              <a href="{% url 'detail' wallet.id %}">
+                <div class="card-content">
+                  <span class="card-title">{{ wallet.name }}</span>
+                </div>
+              </a>
+            </div>
+            
+          {% endfor %}      </p>
         </div>
       </div>
     </div>
@@ -74,17 +83,33 @@
             <div class="card-content card-align-top">
               <span class="card-title">{{ wallet.name }} </span>
               <ul>
-                {% if wallet.coins %}
-                  {% for coin in wallet.coins %}
-                   <li>{{ coin.name }} - {{ coin.symbol }} - Amount: {{ coin.amount }} - price: {{ coin.price }}</li>
-                  {% endfor %}
-                {% else %}
-                  <p>This wallet has no coins</p>
-                {% endif %}
+                {% if wallet %}
+                  {% for coin in wallet.crypto %}
+              
+                   <li>{{ coin.name }} - <li> 
+                   <li>Amount: {{ coin.amount }} </li> 
+                   <li>Current Value: ${% widthratio coin.price 1 coin.amount%}</li>
+
+                   {% endfor %}
+                   {% else %}
+                     <p>This wallet has no coins</p>
+                   {% endif %}
+               
+               
+               
               </ul>
             </div>
             <div class="card-content card-align-bottom">
+              
+
+
               <p class="white-text">Balance of this wallet is: $500</p>
+
+
+                
+
+
+              
               <div class="card-action">
                 <a 
                   class="waves-effect waves-light btn"
