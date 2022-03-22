@@ -133,6 +133,34 @@ def wallets_detail(request, wallet_id):
         'avail_crypto': coins_not_in_wallet 
     })
 
+# Can use the buy_crypto function to update an existing amount table entry or to add
+# a new one
+@login_required
+def buy_crypto(request, wallet_id, crypto_id):
+    buy_amount = request.POST['amount']
+    try:
+        prev_amount = Amount.objects.get(wallet=wallet_id, crypto=crypto_id).amount
+    except ObjectDoesNotExist:
+        prev_amount = None
+    if(prev_amount):
+        new_amount = prev_amount + buy_amount
+        Amount.objects.get(wallet=wallet_id, crypto=crypto_id).update(amount=new_amount)
+    else:
+        Amount.objects.create(wallet=wallet_id, crypto=crypto_id, amount=buy_amount)
+    return redirect('detail', wallet_id = wallet_id)
+
+# Can use the sell funtion to update an existing amount table entry or to delete one
+@login_required
+def sell_crypto(request, wallet_id, crypto_id):
+    sell_amount = request.POST['amount']
+    prev_amount = Amount.objects.get(wallet=wallet_id, crypto=crypto_id).amount
+    new_amount = prev_amount - sell_amount
+    if new_amount > 0:
+        Amount.objects.get(wallet=wallet_id, crypto=crypto_id).update(amount=new_amount)
+    else:
+        Amount.objects.get(wallet=wallet_id, crypto=crypto_id).delete()
+    return redirect('detail', wallet_id = wallet_id)
+
 def crypto_lookup(request):
     form = CryptoForm(request.POST)
     if form.is_valid():
