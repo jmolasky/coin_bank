@@ -95,17 +95,27 @@ def wallets_index(request):
     except (ConnectionError, Timeout, TooManyRedirects) as e:
         print(e)
     
+    # value of all wallets combined
+    all_wallets_total = 0
+
     for wallet in wallets_arr:
+        total = 0
         for coin in wallet['crypto']:
             for obj in coins:
                 if obj['symbol'] == coin['symbol']:
                     coin['price'] = obj['quote']['price']
                     coin['name'] = obj['name']
+            coin_total = coin['amount'] * coin['price']
+            total = total + coin_total
+        all_wallets_total = all_wallets_total + total
+        wallet['total'] = total
     print(f"wallets array: {wallets_arr}")
+
     wallet_form = WalletForm()
     return render(request, 'dashboard.html', {
         'wallets': wallets_arr,
         'wallet_form': wallet_form,
+        'total_value': all_wallets_total,
     })
 
 @login_required
