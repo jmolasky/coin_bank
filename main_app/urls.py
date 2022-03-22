@@ -8,6 +8,8 @@ urlpatterns = [
     # this is the path for the detail page, but the detail page is also the edit page for 
     # the wallets
     path('wallets/<int:wallet_id>/', views.wallets_detail, name='detail'),
+    path('wallets/<int:wallet_id>/<int:crypto_id>/buy/', views.buy_crypto, name='buy_crypto'),
+    path('wallets/<int:wallet_id>/<int:crypto_id>/sell/', views.sell_crypto, name='sell_crypto'),
     path('wallets/create/', views.add_wallet, name='add_wallet'),
     path('crypto/', views.CryptoList.as_view(), name='crypto_list'),
     path('crypto/lookup/', views.crypto_lookup, name='crypto_lookup'),
