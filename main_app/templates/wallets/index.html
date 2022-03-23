@@ -7,7 +7,8 @@
   <div class="card">
     <a href="{% url 'detail' wallet.id %}">
       <div class="card-content">
-        <span class="card-title">{{ wallet.name }}</span>
+        <p>{{ wallet.crypto }}</p>
+        <p>{{ wallet.amount }}</p>
       </div>
     </a>
   </div>
