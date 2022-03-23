@@ -110,7 +110,6 @@ def wallets_index(request):
             total = total + coin_total
         all_wallets_total = all_wallets_total + total
         wallet['total'] = total
-    print(f"wallets array: {wallets_arr}")
 
     wallet_form = WalletForm()
     return render(request, 'dashboard.html', {
