@@ -106,6 +106,7 @@ def wallets_index(request):
                     coin['price'] = obj['quote']['price']
                     coin['name'] = obj['name']
             coin_total = coin['amount'] * coin['price']
+            coin['total'] = coin_total
             total = total + coin_total
         all_wallets_total = all_wallets_total + total
         wallet['total'] = total
