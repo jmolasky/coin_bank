@@ -8,6 +8,7 @@
 
 <form action="{% url 'add_crypto' coin_market_cap_id symbol %}" method="POST">
   {% csrf_token %} 
+  {{ form.as_p }}
   <input type="submit" value="Yes - Add" class="btn blue" />
   <a href="{% url 'crypto_list' %}" class="btn yellow">Cancel</a>
 </form>

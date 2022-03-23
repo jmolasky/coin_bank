@@ -25,6 +25,22 @@
           </span>
         </div>
       </div>
+      <h3>Buy</h3>
+      <form action="{% url 'buy_crypto' wallet.id coin.id %}" method="POST"></form>
+      {% csrf_token %} 
+      <label for="amount">Amount</label>
+      <input text="text" name="amount">
+      <input type="submit" value="Buy">
+      </form>
+
+      <h3>Sell</h3>
+      <form action="{% url 'sell_crypto' wallet.id coin.id %}" method="POST"></form>
+      {% csrf_token %} 
+      <label for="amount">Amount</label>
+      <input text="text" name="amount">
+      <input type="submit" value="Sell">
+      </form>
+
       {% endfor %} 
     {% else %}
       <h6>{{ wallet.name }} has no coins at this time</h6>
@@ -39,6 +55,13 @@
         <div class="card_content">
             <span>{{ coin.symbol }}</span>
         </div>
+        <h3>Buy</h3>
+        <form action="{% url 'buy_crypto' wallet.id coin.id %}" method="POST"></form>
+        {% csrf_token %} 
+        <label for="amount">Amount</label>
+        <input text="text" name="amount">
+        <input type="submit" value="Buy">
+        </form>
         </div>
         {% endfor %} 
     {% else %}
