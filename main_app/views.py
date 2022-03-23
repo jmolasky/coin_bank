@@ -111,6 +111,10 @@ def wallets_index(request):
         all_wallets_total = all_wallets_total + total
         wallet['total'] = total
 
+    for wallet in wallets_arr:
+        percentage = (wallet['total'] / all_wallets_total) * 10
+        wallet['percentage'] = percentage
+        
     wallet_form = WalletForm()
     return render(request, 'dashboard.html', {
         'wallets': wallets_arr,
