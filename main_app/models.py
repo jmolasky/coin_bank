@@ -3,8 +3,6 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 import math
 
-
-
 # Create your models here.
 
 # just call this Crypto in the actual app
