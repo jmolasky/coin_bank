@@ -14,7 +14,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum
 
-
 url = 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest'
 api_key = config('api_key')
 
@@ -150,26 +149,30 @@ def wallets_detail(request, wallet_id):
 # a new one
 @login_required
 def buy_crypto(request, wallet_id, crypto_id):
-    buy_amount = request.POST['amount']
+    buy_amount = float(request.POST['amount'])
     try:
-        prev_amount = Amount.objects.get(wallet=wallet_id, crypto=crypto_id).amount
+        amt = Amount.objects.get(wallet=wallet_id, crypto=crypto_id)
+        prev_amount = amt.amount
     except ObjectDoesNotExist:
         prev_amount = None
     if(prev_amount):
         new_amount = prev_amount + buy_amount
-        Amount.objects.get(wallet=wallet_id, crypto=crypto_id).update(amount=new_amount)
+        Amount.objects.filter(wallet=wallet_id, crypto=crypto_id).update(amount=new_amount)
     else:
-        Amount.objects.create(wallet=wallet_id, crypto=crypto_id, amount=buy_amount)
+        wallet = Wallet.objects.get(id=wallet_id)
+        crypto = Crypto.objects.get(id=crypto_id)
+        Amount.objects.create(wallet=wallet, crypto=crypto, amount=buy_amount)
     return redirect('detail', wallet_id = wallet_id)
 
 # Can use the sell funtion to update an existing amount table entry or to delete one
 @login_required
 def sell_crypto(request, wallet_id, crypto_id):
-    sell_amount = request.POST['amount']
-    prev_amount = Amount.objects.get(wallet=wallet_id, crypto=crypto_id).amount
+    sell_amount = float(request.POST['amount'])
+    amt = Amount.objects.get(wallet=wallet_id, crypto=crypto_id)
+    prev_amount = amt.amount
     new_amount = prev_amount - sell_amount
     if new_amount > 0:
-        Amount.objects.get(wallet=wallet_id, crypto=crypto_id).update(amount=new_amount)
+        Amount.objects.filter(wallet=wallet_id, crypto=crypto_id).update(amount=new_amount)
     else:
         Amount.objects.get(wallet=wallet_id, crypto=crypto_id).delete()
     return redirect('detail', wallet_id = wallet_id)
@@ -195,7 +198,6 @@ def crypto_lookup(request):
                 data = json.loads(response.text)
                 data = data['data']
                 crypto = data[symbol][0]
-                print(crypto)
                 return render(request, 'crypto/confirm.html', {
                     'name': crypto['name'],
                     'symbol': crypto['symbol'],

@@ -1,47 +1,45 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Wallet Detail</h1>
-
-<div class="row">
-  <div class="col s6">
-    <div class="card">
-      <div class="card-content">
-        <span class="card-title">{{ wallet.name }}</span>
-      </div>
-    </div>
-  </div>
-</div>
+<h1>{{ wallet.name }}</h1>
   
 <div class="row">
   <div class="col s6">
     <h3>{{ wallet.name }}'s Coins</h3>
-    {% if wallet.crypto %} 
-      {% for coin in wallet.crypto %}
-      <div class="card">
-        <div class="card-content">
-            {{ coin.amount }}
-          <span class="card-title">
-              {{ coin.crypto.symbol }}
-          </span>
-        </div>
-      </div>
-      <h3>Buy</h3>
-      <form action="{% url 'buy_crypto' wallet.id coin.id %}" method="POST"></form>
-      {% csrf_token %} 
-      <label for="amount">Amount</label>
-      <input text="text" name="amount">
-      <input type="submit" value="Buy">
-      </form>
-
-      <h3>Sell</h3>
-      <form action="{% url 'sell_crypto' wallet.id coin.id %}" method="POST"></form>
-      {% csrf_token %} 
-      <label for="amount">Amount</label>
-      <input text="text" name="amount">
-      <input type="submit" value="Sell">
-      </form>
-
-      {% endfor %} 
+    {% if wallet.crypto %}
+      <table class="bordered">
+        <thead>
+          <tr>
+            <th>Coin</th>
+            <th>Amount</th>
+            <th>Buy</th>
+            <th>Sell</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for coin in wallet.crypto %}
+            <tr>
+              <td>{{ coin.crypto.symbol }}</td>
+              <td>{{ coin.amount }}</td>
+              <td>
+                <form action="{% url 'buy_crypto' wallet.id coin.crypto.id %}" method="POST">
+                  {% csrf_token %} 
+                  <label for="amount">Amount</label>
+                  <input type="number" step="0.01" name="amount">
+                  <input type="submit" value="Buy">
+                </form>
+              </td>
+              <td>
+                <form action="{% url 'sell_crypto' wallet.id coin.crypto.id %}" method="POST">
+                  {% csrf_token %} 
+                  <label for="amount">Amount</label>
+                  <input type="number" step="0.01" name="amount">
+                  <input type="submit" value="Sell">
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table> 
     {% else %}
       <h6>{{ wallet.name }} has no coins at this time</h6>
     {% endif %}
@@ -55,12 +53,11 @@
         <div class="card_content">
             <span>{{ coin.symbol }}</span>
         </div>
-        <h3>Buy</h3>
-        <form action="{% url 'buy_crypto' wallet.id coin.id %}" method="POST"></form>
+        <form action="{% url 'buy_crypto' wallet.id coin.id %}" method="POST">
         {% csrf_token %} 
-        <label for="amount">Amount</label>
-        <input text="text" name="amount">
-        <input type="submit" value="Buy">
+          <label for="amount">Amount</label>
+          <input type="number" step="0.01" name="amount">
+          <input type="submit" value="Buy">
         </form>
         </div>
         {% endfor %} 
