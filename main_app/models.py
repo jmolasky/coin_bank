@@ -8,7 +8,8 @@ import math
 # just call this Crypto in the actual app
 class Crypto(models.Model):
     symbol = models.CharField(max_length=100)
-   
+    cmc_id = models.IntegerField(null=True)
+
     def __str__(self):
         return self.symbol
 
