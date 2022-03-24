@@ -1,26 +1,17 @@
 {% extends 'base.html' %}
+{% load mathfilters %}
+{% load humanize %}
 
 {% block content %}
 
-    
 <div class="container">
   <div class="row equal-height-grid">
-    
     <!-- big charts start -->
     <div class="col s12">
-    
       <div class="card">
-
-
         <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/coinMarquee.js"></script><div id="coinmarketcap-widget-marquee" coins="1,1027,825,1839,52,5994,6758,5426,11865,18876,2300" currency="USD" theme="light" transparent="true" show-symbol-logo="true"></div>
-
-
-        
-      </div>
-
-        
-    </div>
-      
+      </div>  
+    </div> 
     <br>
     <!-- chart end -->
         
@@ -33,16 +24,10 @@
           <div class="card-toolbar-actions"></div>
         </div>
         <div class="card-content card-align-center">
-          <span class="card-title">Total Value of {{ user }}'s' Wallets: ${% widthratio total_value 1 1 %} </span>
-
+          <span class="card-title">Total Value of {{ user }}'s' Wallets: ${{ total_value|floatformat:2|intcomma }} </span>
           <p class="white-text">
             <div class="card">
-             
-               
                 </div>
-             
-            
-            
              </p>
         </div>
       </div>
@@ -67,27 +52,16 @@
               
                    <li>{{ coin.name }}: <li> 
                    <li>Amount: {{ coin.amount }} </li> 
-                   <li>Current Value: ${% widthratio coin.price 1 coin.amount%}</li>
+                   <li>Current Value: ${{ coin.amount|mul:coin.price|floatformat:2|intcomma }}</li>
                     <br>
                    {% endfor %}
                    {% else %}
                      <p>This wallet has no coins</p>
                    {% endif %}
-               
-               
-               
               </ul>
             </div>
             <div class="card-content card-align-bottom">
-              
-
-
-              <p class="white-text">Balance of this wallet is: ${% widthratio wallet.total 1 1 %}</p>
-
-
-
-
-              
+              <p class="white-text">Balance of this wallet is: ${{ wallet.total|floatformat:2|intcomma }}</p>
               <div class="card-action">
                 <a 
                   class="waves-effect waves-light btn"
@@ -126,7 +100,6 @@
 </div>
 </div>
 
-    
     <!-- External libraries -->
    
    {% endblock %}
