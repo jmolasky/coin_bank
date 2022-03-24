@@ -61,7 +61,13 @@
               </ul>
             </div>
             <div class="card-content card-align-bottom">
-              <p class="white-text">Balance of this wallet is: ${{ wallet.total|floatformat:2|intcomma }}</p>
+              
+              {% if wallet.crypto %}
+               <p class="white-text">Balance of this wallet is: ${{ wallet.total|floatformat:2|intcomma }}</p>
+              {% else %}
+              <p class="white-text">This wallet has no coins</p>
+              {% endif %}
+                
               <div class="card-action">
                 <a 
                   class="waves-effect waves-light btn"

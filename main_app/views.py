@@ -49,77 +49,94 @@ def signup(request):
 def wallets_index(request):
     # get all wallets
     wallets = Wallet.objects.filter(user = request.user)
-    symbols_arr = []
-    wallets_arr = []
-    for wallet in wallets:
-        coins_arr = []
-        wallet_coins = Amount.objects.filter(wallet=wallet.id)
-        for coin in wallet_coins:
-            if (coin.crypto.symbol not in symbols_arr):
-                symbols_arr.append(coin.crypto.symbol)
-            coin_object = {
-                'symbol': coin.crypto.symbol,
-                'amount': coin.amount,
-            }
-            coins_arr.append(coin_object)
-        wallet_obj = {
-            'id': wallet.id,
-            'name': wallet.name,
-            'crypto': coins_arr,
-        }
-        # add coins_not_in_wallet to each wallet
-        wallet_obj['crypto_not_in_wallet'] =  Crypto.objects.exclude(id__in=wallet_coins.values_list('crypto'))
-        wallets_arr.append(wallet_obj)
-    # get all symbols in all wallets
-    symbols = ','.join(symbols_arr)
-    parameters = {
-        'symbol': symbols
-    }
-    session = Session()
-    session.headers.update(headers)
-    try:
-        # api call for all coins in all wallets
-        response = session.get(url, params=parameters)
-        data = json.loads(response.text)
-        data = data['data']
-        coins = []
-        for symbol in symbols_arr:
-            coin_obj = data[symbol][0]
-            obj = {
-                'symbol': symbol,
-                'name': coin_obj['name'],
-                'last_updated': coin_obj['last_updated'],
-                'quote': coin_obj['quote']['USD'],
-            }
-            coins.append(obj)
-    except (ConnectionError, Timeout, TooManyRedirects) as e:
-        print(e)
-    
-    # value of all wallets combined
-    all_wallets_total = 0
-
-    for wallet in wallets_arr:
-        total = 0
-        for coin in wallet['crypto']:
-            for obj in coins:
-                if obj['symbol'] == coin['symbol']:
-                    coin['price'] = obj['quote']['price']
-                    coin['name'] = obj['name']
-            coin_total = coin['amount'] * coin['price']
-            total = total + coin_total
-        all_wallets_total = all_wallets_total + total
-        wallet['total'] = total
-
-    for wallet in wallets_arr:
-        percentage = (wallet['total'] / all_wallets_total) * 10
-        wallet['percentage'] = percentage
-        
     wallet_form = WalletForm()
-    return render(request, 'dashboard.html', {
-        'wallets': wallets_arr,
-        'wallet_form': wallet_form,
-        'total_value': all_wallets_total,
-    })
+    if wallets:
+        id_arr = []
+        symbols_arr = []
+        wallets_arr = []
+        for wallet in wallets:
+            coins_arr = []
+            wallet_coins = Amount.objects.filter(wallet=wallet.id)
+            for coin in wallet_coins:
+                if (coin.crypto.symbol not in symbols_arr):
+                    symbols_arr.append(coin.crypto.symbol)
+                    id_arr.append(str(coin.crypto.cmc_id))
+                coin_object = {
+                    'symbol': coin.crypto.symbol,
+                    'amount': coin.amount,
+                }
+                coins_arr.append(coin_object)
+            wallet_obj = {
+                'id': wallet.id,
+                'name': wallet.name,
+                'crypto': coins_arr,
+            }
+            # add coins_not_in_wallet to each wallet
+            wallet_obj['crypto_not_in_wallet'] =  Crypto.objects.exclude(id__in=wallet_coins.values_list('crypto'))
+            wallets_arr.append(wallet_obj)
+        # get all symbols in all wallets
+        if len(id_arr) > 0:
+            ids = ','.join(id_arr)
+            parameters = {
+                'id': ids
+            }
+            session = Session()
+            session.headers.update(headers)
+            try:
+                # api call for all coins in all wallets
+                response = session.get(url, params=parameters)
+                data = json.loads(response.text)
+                print(data)
+                data = data['data']
+                coins = []
+                for id in id_arr:
+                    coin_obj = data[id]
+                    obj = {
+                        'symbol': coin_obj['symbol'],
+                        'name': coin_obj['name'],
+                        'last_updated': coin_obj['last_updated'],
+                        'quote': coin_obj['quote']['USD'],
+                    }
+                    coins.append(obj)
+            except (ConnectionError, Timeout, TooManyRedirects) as e:
+                print(e)
+            
+            # value of all wallets combined
+            all_wallets_total = 0
+
+            for wallet in wallets_arr:
+                total = 0
+                for coin in wallet['crypto']:
+                    for obj in coins:
+                        if obj['symbol'] == coin['symbol']:
+                            coin['price'] = obj['quote']['price']
+                            coin['name'] = obj['name']
+                    coin_total = coin['amount'] * coin['price']
+                    total = total + coin_total
+                all_wallets_total = all_wallets_total + total
+                wallet['total'] = total
+
+            for wallet in wallets_arr:
+                percentage = (wallet['total'] / all_wallets_total) * 10
+                wallet['percentage'] = percentage
+            
+            return render(request, 'dashboard.html', {
+                'wallets': wallets_arr,
+                'wallet_form': wallet_form,
+                'total_value': all_wallets_total,
+            })
+        else:
+            return render(request, 'dashboard.html', {
+            'wallets': wallets_arr,
+            'wallet_form': wallet_form,
+            'total_value': 0,
+        })
+    else:
+        return render(request, 'dashboard.html', {
+            'wallets': None,
+            'wallet_form': wallet_form,
+            'total_value': 0,
+        })
 
 @login_required
 def add_wallet(request):
@@ -208,7 +225,7 @@ def crypto_lookup(request):
             print(e)
 
 def add_crypto(request, coin_market_cap_id, symbol):
-    Crypto.objects.create(symbol=symbol)
+    Crypto.objects.create(symbol=symbol, cmc_id=coin_market_cap_id)
     return redirect('crypto_list')
 
 class CryptoList(ListView):
