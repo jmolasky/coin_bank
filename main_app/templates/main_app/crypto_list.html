@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+<h1>Coin List</h1>
+
+<form action="{% url 'crypto_lookup' %}" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Lookup Coin" class="btn blue">
+</form>
+
+<br>
+
+{% for coin in object_list %}
+<div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ coin.symbol }}</span>
+    </div>
+</div>
+{% endfor %} 
+
+{% endblock %}
