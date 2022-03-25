@@ -28,8 +28,8 @@ Getting Started:
 ERD:
 </h3>
 
-<!-- pic of erd -->
 
+<img width="723" alt="Screen Shot 2022-03-24 at 8 01 53 PM" src="https://user-images.githubusercontent.com/90932673/160034775-4d8853ce-99a4-4b1a-93fe-eb345b20b038.png">
 
 
 
