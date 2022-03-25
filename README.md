@@ -91,9 +91,11 @@ Other Links
 
 <li> <a href="https://coinmarketcap.com/api/documentation/v1/">API from CoinMarket Cap </a> </li>
 
-<li> API Key for coin market cap : f1255f3a-72de-4c0f-8067-b6b1764c3cf0
+<li> <a href="https://metamask.io/"> Metamask Wallet </a>   </li>
+<li> <a href="https://phantom.app/"> Phantom Wallet </a>   </li>
 
-    </li>
+    
+ 
 
 </ul>
 
