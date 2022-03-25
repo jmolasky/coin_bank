@@ -4,7 +4,7 @@
 
 #Live Link 
 
-<a href=""> Project 4 link to Coin_Bank_App </a>
+<a href="https://coin-bank.herokuapp.com/"> Project 4 link to Coin_Bank_App </a>
 
 <h3> About the Project: </h3>
 
@@ -22,7 +22,7 @@ Getting Started:
 
 </h3>
 <p>
-    Users will enter the name of their wallet, type of coins and amount. Based on the users data entries the app will aggregate the total value of each wallet and display it on a simple dashboard/account summary page. </p>
+    Users will enter the name of their wallet, type of coins and amount. Based on the users data entries the app will aggregate the total value of each wallet and display it on a simple dashboard/account summary page. In addition the app will also display the current value of the coins in the wallet based on the quantity the user owns. </p>
 
 <h3>
 ERD:
@@ -31,11 +31,6 @@ ERD:
 <!-- pic of erd -->
 
 
-<h3>
-Model:
-</h3>
-
-<!-- pic of model page -->
 
 
 <h3>
@@ -56,20 +51,23 @@ Technologies USED:
 
 
 
-Initial Screenshots:
 
-<!-- pic -->
+Screenshots:
 
-
-
-Final Screenshots:
+<img width="1440" alt="Screen Shot 2022-03-24 at 8 45 11 PM" src="https://user-images.githubusercontent.com/90932673/160033164-698eb304-1495-4ff9-863d-6e8337d350a9.png">
 
 
-<!-- pics -->
+<img width="1440" alt="Screen Shot 2022-03-24 at 8 44 31 PM" src="https://user-images.githubusercontent.com/90932673/160033556-47ac8e70-952c-48cf-a51a-1606e348d398.png">
 
 
+    
 
-<br>
+
+    
+
+<br><img width="1087" alt="Screen Shot 2022-03-24 at 8 42 31 PM" src="https://user-images.githubusercontent.com/90932673/160033762-f01f72c9-eabc-46e7-922f-52e40c81d021.png">
+    
+
 <h3>
 Other Links
 </h3>
@@ -79,20 +77,23 @@ Other Links
 <h5>
 
 <ul>
+<li>
+    <a href="https://coin-bank.herokuapp.com/">Coin Bank App LIVE!</a></li>
 
 <li> 
 <a href="https://github.com/jmolasky/project_4_test">Test Project </a> </li>
 
 <li> 
-<a href="https://trello.com/invite/b/ikF0RzVE/e6b47d1d6aef036b537c7de479abbcc9/project-4-planning"> Trello Board</a> </li>
+<a href="https://trello.com/b/ikF0RzVE/project-4-planning">Trello Board</a> </li>
 
 <li> <a href="https://docs.google.com/presentation/d/1xKGFOaHRCUb5qFIfaoh62O9vhbbdgheGQp9qr9SwmCQ/edit?usp=sharing">Slides </a>
 </li>
 
-<li> <a href="https://coinmarketcap.com/api/documentation/v2/">API from CoinMarket Cap </a> </li>
+<li> <a href="https://coinmarketcap.com/api/documentation/v1/">API from CoinMarket Cap </a> </li>
 
 <li> API Key for coin market cap : f1255f3a-72de-4c0f-8067-b6b1764c3cf0
- </li>
+
+    </li>
 
 </ul>
 
