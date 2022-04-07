@@ -197,7 +197,7 @@ def sell_crypto(request, wallet_id, crypto_id):
 def crypto_lookup(request):
     form = CryptoForm(request.POST)
     if form.is_valid():
-        symbol = form.cleaned_data['symbol']
+        symbol = form.cleaned_data['symbol'].upper()
         try:
             # prevents user from adding duplicate coins
             database_crypto = Crypto.objects.get(symbol=symbol)
