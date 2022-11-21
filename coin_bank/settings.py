@@ -25,9 +25,9 @@ SECRET_KEY = 'django-insecure-u5mzi)!v$3h$vx-9^c)au!*())zo%!&un_8bg3%725l6ncu($&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://coin-bank.up.railway.app/']
+ALLOWED_HOSTS = []
 
-
+CSRF_TRUSTED_ORIGINS = ['https://coin-bank.up.railway.app/']
 # Application definition
 
 INSTALLED_APPS = [
