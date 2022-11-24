@@ -43,7 +43,7 @@ Technologies USED:
 <li>CSS    </li>
 <li>HTML   </li>
 <li>Django </li>
-<li>Heroku  </li>
+<li>Railway  </li>
 <li>JavaScript </li>
 <li>Materialize </li>
 <li>Postgres  </li>
