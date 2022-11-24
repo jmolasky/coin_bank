@@ -4,7 +4,7 @@
 
 #Live Link 
 
-<a href="https://coin-bank.herokuapp.com/"> Project 4 link to Coin_Bank_App </a>
+<a href="https://coin-bank.up.railway.app"> Project 4 link to Coin_Bank_App </a>
 
 <h3> About the Project: </h3>
 
@@ -78,7 +78,7 @@ Other Links
 
 <ul>
 <li>
-    <a href="https://coin-bank.herokuapp.com/">Coin Bank App LIVE!</a></li>
+    <a href="https://coin-bank.up.railway.app/">Coin Bank App LIVE!</a></li>
 
 <li> 
 <a href="https://github.com/jmolasky/project_4_test">Test Project </a> </li>
